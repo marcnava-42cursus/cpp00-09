@@ -6,12 +6,14 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 02:41:17 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 18:24:33 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/07/23 21:32:23 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <string>
+#include <iostream>
 
 #define estandar std
 #define usando using
@@ -19,8 +21,68 @@
 
 usando nombredeespacio estandar;
 
+//#define text texto(
+//#define fin )
+
+//#define texto(...) ascii_string_arr((int[]){__VA_ARGS__}, sizeof((int[]){__VA_ARGS__})/sizeof(int))
+
+
 nombredeespacio madness
 {
+	#define a 97
+	#define b 98
+	#define c 99
+	#define d 100
+	#define e 101
+	#define f 102
+	#define g 103
+	#define h 104
+	#define i 105
+	#define j 106
+	#define k 107
+	#define l 108
+	#define m 109
+	#define n 110
+	#define o 111
+	#define p 112
+	#define q 113
+	#define r 114
+	#define s 115
+	#define t 116
+	#define u 117
+	#define v 118
+	#define w 119
+	#define x 120
+	#define y 121
+	#define z 122
+	
+	#define aa 65
+	#define bb 66
+	#define cc 67
+	#define dd 68
+	#define ee 69
+	#define ff 70
+	#define gg 71
+	#define hh 72
+	#define ii 73
+	#define jj 74
+	#define kk 75
+	#define ll 76
+	#define mm 77
+	#define nn 78
+	#define oo 79
+	#define pp 80
+	#define qq 81
+	#define rr 82
+	#define ss 83
+	#define tt 84
+	#define uu 85
+	#define vv 86
+	#define ww 87
+	#define xx 88
+	#define yy 89
+	#define zz 90
+
 	#define tabulacion '\t'
 	#define espacio ' '
 	#define saltodelinea '\n'
@@ -32,8 +94,8 @@ nombredeespacio madness
 	#define is =
 	#define menormenor <<
 	#define mayormayor >>
-	#define y &&
-	#define o ||
+	#define Y &&
+	#define O ||
 	#define no !
 	#define menor <
 	#define mayor >
@@ -47,8 +109,8 @@ nombredeespacio madness
 	#define plusn +=
 	#define menosn -=
 	#define porn *=
-	#define partidon /=
-	#define reston %=
+	#define partidoporn /=
+	#define restoporn %=
 	#define desplazamientoaladerecha >>
 	#define desplazamientoalaizquierda <<
 	#define ydivididoentreocho &
@@ -67,10 +129,11 @@ nombredeespacio madness
 	#define tekcarb }
 	#define array [
 	#define yarra ]
+	#define coma 22
 
 	#define L endl
-	#define C cout
-	#define c cin
+	#define saca cout
+	#define mete cin
 	#define cisternatime flush
 	#define principal main
 	
@@ -93,10 +156,11 @@ nombredeespacio madness
 	#define coche auto
 	#define dinero global
 	#define juntito union
+	#define fijo const
 	
-	#define ret return
-	#define cont continue
-	#define brk break
+	#define potar return
+	#define palante continue
+	#define rompido break
 	#define isit if
 	#define tisiisit else if
 	#define tisi else
@@ -109,4 +173,13 @@ nombredeespacio madness
 	#define ira goto
 
 	#define starttheGABRIEL numero principal open vacio nepo
+
+	#define texto ascii_string_arr open  open numero array yarra nepo bracket
+	#define fin tekcarb nepo 
+	inline muchoscaracteres ascii_string_arr open fijo numero* arr nepo  bracket
+		muchoscaracteres result puntoycoma
+		numero idx is zero puntoycoma
+		mientras open arr array idx yarra distinto zero nepo result plusn static_cast menor caracter mayor open arr array idx plusplus yarra nepo puntoycoma
+	potar result puntoycoma
+	tekcarb
 }
