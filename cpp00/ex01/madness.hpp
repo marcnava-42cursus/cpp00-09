@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 02:41:17 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 21:42:31 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/07/23 21:48:42 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ nombredeespacio madness
 	#define dinero global
 	#define juntito union
 	#define fijo const
+	#define punterochar char*
 	
 	#define potar return
 	#define palante continue
