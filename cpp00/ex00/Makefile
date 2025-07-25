@@ -6,11 +6,11 @@
 #    By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 17:49:30 by marcnava          #+#    #+#              #
-#    Updated: 2025/07/23 00:36:36 by marcnava         ###   ########.fr        #
+#    Updated: 2025/07/25 12:56:25 by marcnava         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ex00
+NAME		= megaphone
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 

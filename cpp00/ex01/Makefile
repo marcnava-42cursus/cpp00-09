@@ -1,35 +1,28 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/22 17:49:30 by marcnava          #+#    #+#              #
-#    Updated: 2025/07/23 00:43:45 by marcnava         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME		= ex01
+NAME		= phonebook
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Iincludes
 
-SRCS		= Contact.cpp \
-			  PhoneBook.cpp \
-			  main.cpp
+BUILDPATH	= build
+SRCSPATH	= src
 
-OBJS		= $(SRCS:.cpp=.o)
+SRCS		= $(SRCSPATH)/Contact.cpp \
+			  $(SRCSPATH)/PhoneBook.cpp \
+			  $(SRCSPATH)/main.cpp
+
+OBJS		= $(SRCS:$(SRCSPATH)/%.cpp=$(BUILDPATH)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
+# Regla de compilación
+build/%.o: $(SRCSPATH)/%.cpp
+	@mkdir -p $(BUILDPATH)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(BUILDPATH)
 
 fclean: clean
 	rm -f $(NAME)
