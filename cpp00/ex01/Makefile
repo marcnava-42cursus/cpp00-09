@@ -17,7 +17,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 # Regla de compilación
-build/%.o: $(SRCSPATH)/%.cpp
+$(BUILDPATH)/%.o: $(SRCSPATH)/%.cpp
 	@mkdir -p $(BUILDPATH)
 	$(CC) $(CFLAGS) -c $< -o $@
 
