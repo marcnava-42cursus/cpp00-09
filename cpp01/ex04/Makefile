@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/26 13:49:02 by marcnava          #+#    #+#              #
-#    Updated: 2025/08/26 13:49:02 by marcnava         ###   ########.fr        #
+#    Created: 2025/08/26 13:48:44 by marcnava          #+#    #+#              #
+#    Updated: 2025/08/26 14:43:05 by marcnava         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= brain
+NAME		= replace
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 

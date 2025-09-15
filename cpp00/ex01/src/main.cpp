@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 00:35:51 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/26 14:20:19 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:13:01 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 #include <iomanip>
 #include <limits>
 
-using namespace std;
-
 #define c1 "\033[31m"
 #define c2 "\033[32m"
 #define c3 "\033[33m"
 #define r "\033[0m"
 
 #define A "ADD"
-#define App '\t' << c3 << A << r << ": Add a new contact entry." << endl
+#define App '\t' << c3 << A << r << ": Add a new contact entry." << std::endl
 #define S "SEARCH"
-#define Spp '\t' << c2 << S << r << ": Search an specific contact." << endl
+#define Spp '\t' << c2 << S << r << ": Search an specific contact." << std::endl
 #define X "EXIT"
 #define Xpp '\t' << c1 << X << r << ": Exit the program."
 #define I c1 << "Invalid Option!: "
@@ -35,24 +33,24 @@ using namespace std;
 
 void clearScreen()
 {
-	cout << "\033[2J\033[1;1H";
-	cout.flush();
+	std::cout << "\033[2J\033[1;1H";
+	std::cout.flush();
 }
 
-string checkField(string fieldMsg)
+std::string checkField(std::string fieldMsg)
 {
-	string input = "";
+	std::string input = "";
 	for (;input.length() == 0;)
 	{
-		cout << fieldMsg << ": ";
-		getline(cin, input);
+		std::cout << fieldMsg << ": ";
+		getline(std::cin, input);
 	}
 	return input;
 }
 
 void addContact(PhoneBook *pb)
 {
-	string tmp;
+	std::string tmp;
 	clearScreen();
 	pb->addContact(
 		checkField("Enter first name"),
@@ -61,24 +59,24 @@ void addContact(PhoneBook *pb)
 		checkField("Enter phone number"),
 		checkField("Enter darkest secret")
 	);
-	cout << "Contact added successfully, press any key to continue" << endl;
+	std::cout << "Contact added successfully, press any key to continue" << std::endl;
 	getchar();
 	clearScreen();
 }
 
-void printCell(string text, bool nl)
+void printCell(std::string text, bool nl)
 {
 	if (text.length() > 10)
 	{
 		text.resize(9);
 		text.append(".");
 	}
-	cout << setfill(' ') << setw(10) << text << (nl ? "|\n" : "|");
+	std::cout << std::setfill(' ') << std::setw(10) << text << (nl ? "|\n" : "|");
 }
 
 void printHeader(void)
 {
-	cout << '|';
+	std::cout << '|';
 	printCell("Index", false);
 	printCell("First Name", false);
 	printCell("Last Name", false);
@@ -89,8 +87,8 @@ void printContacts(PhoneBook *pb)
 {
 	for (int i = 0; i < pb->getNumberEntries(); i++)
 	{
-		cout << '|';
-		cout << setfill(' ') << setw(10) << i + 1 << "|";
+		std::cout << '|';
+		std::cout << std::setfill(' ') << std::setw(10) << i + 1 << "|";
 		printCell(pb->contacts[i].getFirstName(), false);
 		printCell(pb->contacts[i].getLastName(), false);
 		printCell(pb->contacts[i].getPhoneNumber(), true);
@@ -99,27 +97,27 @@ void printContacts(PhoneBook *pb)
 
 void printContact(Contact contact)
 {
-	cout << "First Name: " << contact.getFirstName() << endl;
-	cout << "Last Name: " << contact.getLastName() << endl;
-	cout << "Nickname: " << contact.getNickname() << endl;
-	cout << "Phone Number: " << contact.getPhoneNumber() << endl;
-	cout << "Darkest Secret: " << contact.getDarkestSecret() << endl;
+	std::cout << "First Name: " << contact.getFirstName() << std::endl;
+	std::cout << "Last Name: " << contact.getLastName() << std::endl;
+	std::cout << "Nickname: " << contact.getNickname() << std::endl;
+	std::cout << "Phone Number: " << contact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
 }
 
 int main(void)
 {
-	string cmd;
+	std::string cmd;
 	PhoneBook pb;
 	bool i = false;
 
 	clearScreen();
 	while(true)
 	{
-		i ? cout << I << cmd << r << endl : cout << endl;
-		cout << endl << O << endl << App << Spp << Xpp << endl;
-		cout << E;
+		i ? std::cout << I << cmd << r << std::endl : std::cout << std::endl;
+		std::cout << std::endl << O << std::endl << App << Spp << Xpp << std::endl;
+		std::cout << E;
 
-		if ( !(getline(cin, cmd)))
+		if ( !(getline(std::cin, cmd)))
 			return 1;
 		clearScreen();
 		if ( cmd.compare(A) == 0)
@@ -134,15 +132,15 @@ int main(void)
 			i = false;
 			printHeader();
 			printContacts(&pb);
-			cout << "Select an contact index: ";
-			cin >> index;
+			std::cout << "Select an contact index: ";
+			std::cin >> index;
 			if (index > 0 && index <= pb.getNumberEntries())
 				printContact(pb.contacts[index - 1]);
 			else
-				cout << "Invalid index" << endl;
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Press any key to continue" << endl;
+				std::cout << "Invalid index" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Press any key to continue" << std::endl;
 			getchar();
 			clearScreen();
 		}

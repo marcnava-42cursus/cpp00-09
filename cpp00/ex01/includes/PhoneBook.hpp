@@ -6,17 +6,18 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:31:45 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 00:53:44 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:10:02 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <string>
+# include <ctime>
 # include <iostream>
-# include "Contact.hpp"
 
-using namespace std;
+# include "Contact.hpp"
 
 # define MAX_CONTACTS 8
 
@@ -29,8 +30,8 @@ class PhoneBook {
 		~PhoneBook();
 		Contact contacts[MAX_CONTACTS];
 		void addContact(Contact &contact);
-		void addContact(string firstName, string lastName, string nickname,
-			string phoneNumber, string darkestSecret);
+		void addContact(std::string firstName, std::string lastName, std::string nickname,
+			std::string phoneNumber, std::string darkestSecret);
 		int getNumberEntries();
 };
 

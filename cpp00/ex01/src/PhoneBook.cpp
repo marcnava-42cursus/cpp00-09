@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:04:35 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 00:54:06 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:11:01 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void PhoneBook::addContact(Contact &contact)
 		contacts[oldest_contact_index(contacts)] = contact;
 }
 
-void PhoneBook::addContact(string firstName, string lastName, string nickname,
-	string phoneNumber, string darkestSecret)
+void PhoneBook::addContact(std::string firstName, std::string lastName, std::string nickname,
+	std::string phoneNumber, std::string darkestSecret)
 {
 	Contact c = Contact(firstName, lastName, nickname,
 		phoneNumber, darkestSecret);

@@ -6,13 +6,11 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:04:48 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 01:03:06 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:10:35 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-using namespace std;
 
 Contact::Contact()
 {
@@ -24,8 +22,8 @@ Contact::Contact()
 	m_createdAt = (time(&m_createdAt));
 }
 
-Contact::Contact(string &firstName, string &lastName, string &nickname,
-	string &phoneNumber, string &darkestSecret)
+Contact::Contact(std::string &firstName, std::string &lastName, std::string &nickname,
+	std::string &phoneNumber, std::string &darkestSecret)
 {
 	m_firstName = firstName;
 	m_lastName = lastName;
@@ -39,27 +37,27 @@ Contact::~Contact() {}
 
 // Getter / Setter
 
-string Contact::getFirstName()
+std::string Contact::getFirstName()
 {
 	return m_firstName;
 }
 
-string Contact::getLastName()
+std::string Contact::getLastName()
 {
 	return m_lastName;
 }
 
-string Contact::getNickname()
+std::string Contact::getNickname()
 {
 	return m_nickname;
 }
 
-string Contact::getPhoneNumber()
+std::string Contact::getPhoneNumber()
 {
 	return m_phoneNumber;
 }
 
-string Contact::getDarkestSecret()
+std::string Contact::getDarkestSecret()
 {
 	return m_darkestSecret;
 }

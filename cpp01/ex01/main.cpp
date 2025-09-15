@@ -9,7 +9,7 @@ int main(void)
 
 	for (int i = 0; i < N; i++)
 	{
-		cout << "Zombie " << i << ": ";
+		std::cout << "Zombie " << i << ": ";
 		horde[i].announce();
 	}
 

@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 18:07:10 by marcnava          #+#    #+#             */
-/*   Updated: 2025/07/23 00:51:59 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/08/22 21:09:32 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,26 @@
 
 # include <string>
 # include <ctime>
-
-using namespace std;
+# include <iostream>
 
 class Contact {
 	private:
-		string m_firstName;
-		string m_lastName;
-		string m_nickname;
-		string m_phoneNumber;
-		string m_darkestSecret;
+		std::string m_firstName;
+		std::string m_lastName;
+		std::string m_nickname;
+		std::string m_phoneNumber;
+		std::string m_darkestSecret;
 		time_t m_createdAt;
 	public:
 		Contact();
-		Contact(string &firstName, string &lastName, string &nickname,
-			string &phoneNumber, string &darkestSecret);
+		Contact(std::string &firstName, std::string &lastName, std::string &nickname,
+			std::string &phoneNumber, std::string &darkestSecret);
 		~Contact();
-		string getFirstName();
-		string getLastName();
-		string getNickname();
-		string getPhoneNumber();
-		string getDarkestSecret();
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getNickname();
+		std::string getPhoneNumber();
+		std::string getDarkestSecret();
 		time_t getCratedAt();
 };
 

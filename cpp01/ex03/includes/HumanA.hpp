@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:13:58 by marcnava          #+#    #+#             */
-/*   Updated: 2025/08/25 20:13:59 by marcnava         ###   ########.fr       */
+/*   Created: 2025/08/26 11:56:45 by marcnava          #+#    #+#             */
+/*   Updated: 2025/08/26 12:16:30 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-void ft_put_upper_str(char *str)
-{
-	for (;*str != '\0';str++)
-		isalpha(*str) ? std::cout << (char)toupper(*str) : std::cout << *str;
-}
+# include <string>
+# include "Weapon.hpp"
 
-int main(int argc, char **argv)
+class HumanA
 {
-	if (argc < 2)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
-	}
-	for (int i = 1; i < argc; i++)
-		ft_put_upper_str(argv[i]);
-	std::cout << std::endl;
-	return 0;
-}
+	private:
+		std::string name;
+		Weapon &weapon;
+	public:
+		HumanA(std::string name, Weapon &weapon);
+		~HumanA();
+		void attack() const;
+};
+
+#endif

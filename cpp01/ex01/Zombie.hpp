@@ -4,19 +4,17 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 class Zombie
 {
 	private:
-		string name;
+		std::string name;
 	public:
 		Zombie();
-		Zombie(string name);
+		Zombie(std::string name);
 		~Zombie();
 		void announce(void);
 };
 
-Zombie* zombieHorde(int N, string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

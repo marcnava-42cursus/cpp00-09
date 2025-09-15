@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:13:58 by marcnava          #+#    #+#             */
-/*   Updated: 2025/08/25 20:13:59 by marcnava         ###   ########.fr       */
+/*   Created: 2025/08/26 13:21:35 by marcnava          #+#    #+#             */
+/*   Updated: 2025/08/26 14:57:12 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "HumanB.hpp"
 
-void ft_put_upper_str(char *str)
+HumanB::HumanB(std::string name)
 {
-	for (;*str != '\0';str++)
-		isalpha(*str) ? std::cout << (char)toupper(*str) : std::cout << *str;
+	this->weapon = NULL;
+	this->name = name;
 }
 
-int main(int argc, char **argv)
+HumanB::~HumanB() {}
+
+void HumanB::setWeapon(Weapon &weapon)
 {
-	if (argc < 2)
+	this->weapon = &weapon;
+}
+
+void HumanB::attack() const
+{
+	if (!this->weapon)
 	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
+		std::cout << this->name << " has not any weapon" << std::endl;
+		return ;
 	}
-	for (int i = 1; i < argc; i++)
-		ft_put_upper_str(argv[i]);
-	std::cout << std::endl;
-	return 0;
+	std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 }

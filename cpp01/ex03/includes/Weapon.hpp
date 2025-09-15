@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 20:13:58 by marcnava          #+#    #+#             */
-/*   Updated: 2025/08/25 20:13:59 by marcnava         ###   ########.fr       */
+/*   Created: 2025/08/25 20:14:07 by marcnava          #+#    #+#             */
+/*   Updated: 2025/08/25 22:40:45 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
+#include <string>
 #include <iostream>
-#include <cctype>
 
-void ft_put_upper_str(char *str)
+class Weapon
 {
-	for (;*str != '\0';str++)
-		isalpha(*str) ? std::cout << (char)toupper(*str) : std::cout << *str;
-}
+	private:
+		std::string type;
+	public:
+		Weapon();
+		Weapon(std::string type);
+		~Weapon();
+		const std::string &getType() const;
+		void setType(std::string type);
+};
 
-int main(int argc, char **argv)
-{
-	if (argc < 2)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return 0;
-	}
-	for (int i = 1; i < argc; i++)
-		ft_put_upper_str(argv[i]);
-	std::cout << std::endl;
-	return 0;
-}
+#endif
