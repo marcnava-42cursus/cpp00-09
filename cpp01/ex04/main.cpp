@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:34:37 by marcnava          #+#    #+#             */
-/*   Updated: 2025/08/26 20:12:03 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:07:47 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,40 @@
 #include <sstream>
 #include <string>
 
-static std::string get_replaced_line(const std::string src,
-	std::string target, std::string replace)
+using std::string;
+
+using std::cin;
+using std::cout;
+
+using std::endl;
+
+static std::string get_replaced_line(string src, string target, string replace)
 {
-	int init = 0;
-	std::cout << src.find(target, init) << std::endl;
-	if (!src.c_str())
-		replace = "";
-	return "";
+	size_t	start = 0;
+
+	while ((start = src.find(target, start)) != string::npos)
+	{
+		src = src.substr(0, start);
+		src += replace;
+		src += src.substr(start, target.length());
+		start = replace.length();
+	}
+	return src;
 }
 
 int main(int argc, char **argv)
 {
-	std::string line_buffer;
-
 	if (argc < 4)
 	{
-		std::cout << "Error: Usage: " << argv[0] << " <filename> <str1> <str2>" << std::endl;
+		cout << "Error: Usage: " << argv[0] << " <filename> <str1> <str2>" << endl;
 		return 0;
 	}
 	
-	std::string ifile = argv[1];
-	std::string ofile = ifile + ".replace";
-	std::string target = argv[2];
-	std::string replace = argv[3];
+	string line_buffer;
+	string ifile = argv[1];
+	string ofile = ifile + ".replace";
+	string target = argv[2];
+	string replace = argv[3];
 	
 	std::ifstream in(ifile.c_str());
 	std::ofstream out(ofile.c_str());
@@ -50,7 +60,12 @@ int main(int argc, char **argv)
 			line_buffer = get_replaced_line(line_buffer, target, replace);
 			out << line_buffer;
 			if (!in.eof())
-				out << std::endl;
+				out << endl;
 		}
+		in.close();
+		out.close();
 	}
+	else
+		cout << "Error: Failed to open the file" << endl;
+	return 0;
 }
