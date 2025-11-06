@@ -35,7 +35,7 @@ class Contact {
 		std::string getNickname();
 		std::string getPhoneNumber();
 		std::string getDarkestSecret();
-		time_t getCratedAt();
+		time_t getCreatedAt();
 };
 
 #endif

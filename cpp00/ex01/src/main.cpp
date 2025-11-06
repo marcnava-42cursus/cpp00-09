@@ -6,30 +6,26 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 00:35:51 by marcnava          #+#    #+#             */
-/*   Updated: 2025/08/22 21:13:01 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/10/16 19:12:33 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 #include <cstdio>
+#include <cstdlib>
 #include <iomanip>
 #include <limits>
 
-#define c1 "\033[31m"
-#define c2 "\033[32m"
-#define c3 "\033[33m"
-#define r "\033[0m"
+#define red "\033[31m"
+#define green "\033[32m"
+#define yellow "\033[33m"
+#define reset "\033[0m"
 
-#define A "ADD"
-#define App '\t' << c3 << A << r << ": Add a new contact entry." << std::endl
-#define S "SEARCH"
-#define Spp '\t' << c2 << S << r << ": Search an specific contact." << std::endl
-#define X "EXIT"
-#define Xpp '\t' << c1 << X << r << ": Exit the program."
-#define I c1 << "Invalid Option!: "
-#define E "Enter an option: "
-#define O "Options: "
+#define App '\t' << green << "ADD" << reset << ": Add a new contact entry." << std::endl
+#define Spp '\t' << yellow << "SEARCH" << reset << ": Search an specific contact." << std::endl
+#define Xpp '\t' << red << "EXIT" << reset << ": Exit the program."
+#define I red << "Invalid Option!: "
 
 void clearScreen()
 {
@@ -37,13 +33,24 @@ void clearScreen()
 	std::cout.flush();
 }
 
+bool isOnlyWhitespace(const std::string &str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (!std::isspace(str[i]))
+			return false;
+	}
+	return true;
+}
+
 std::string checkField(std::string fieldMsg)
 {
 	std::string input = "";
-	for (;input.length() == 0;)
+	while (input.length() == 0 || isOnlyWhitespace(input))
 	{
 		std::cout << fieldMsg << ": ";
-		getline(std::cin, input);
+		if (!getline(std::cin, input))
+			exit(1);
 	}
 	return input;
 }
@@ -87,11 +94,12 @@ void printContacts(PhoneBook *pb)
 {
 	for (int i = 0; i < pb->getNumberEntries(); i++)
 	{
+		Contact contact = pb->getContact(i);
 		std::cout << '|';
 		std::cout << std::setfill(' ') << std::setw(10) << i + 1 << "|";
-		printCell(pb->contacts[i].getFirstName(), false);
-		printCell(pb->contacts[i].getLastName(), false);
-		printCell(pb->contacts[i].getPhoneNumber(), true);
+		printCell(contact.getFirstName(), false);
+		printCell(contact.getLastName(), false);
+		printCell(contact.getNickname(), true);
 	}
 }
 
@@ -113,19 +121,19 @@ int main(void)
 	clearScreen();
 	while(true)
 	{
-		i ? std::cout << I << cmd << r << std::endl : std::cout << std::endl;
-		std::cout << std::endl << O << std::endl << App << Spp << Xpp << std::endl;
-		std::cout << E;
+		i ? std::cout << I << cmd << reset << std::endl : std::cout << std::endl;
+		std::cout << std::endl << "Options: " << std::endl << App << Spp << Xpp << std::endl;
+		std::cout << "Enter an option: ";
 
 		if ( !(getline(std::cin, cmd)))
 			return 1;
 		clearScreen();
-		if ( cmd.compare(A) == 0)
+		if ( cmd.compare("ADD") == 0)
 		{
 			i = false;
 			addContact(&pb);
 		}
-		else if (cmd.compare(S) == 0)
+		else if (cmd.compare("SEARCH") == 0)
 		{
 			int index = -1;
 			clearScreen();
@@ -135,7 +143,7 @@ int main(void)
 			std::cout << "Select an contact index: ";
 			std::cin >> index;
 			if (index > 0 && index <= pb.getNumberEntries())
-				printContact(pb.contacts[index - 1]);
+				printContact(pb.getContact(index - 1));
 			else
 				std::cout << "Invalid index" << std::endl;
 			std::cin.clear();
@@ -144,7 +152,7 @@ int main(void)
 			getchar();
 			clearScreen();
 		}
-		else if (cmd.compare(X) == 0)
+		else if (cmd.compare("EXIT") == 0)
 			break;
 		else
 			i = true;

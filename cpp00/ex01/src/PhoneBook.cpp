@@ -16,7 +16,7 @@ int oldest_contact_index(Contact contacts[MAX_CONTACTS])
 {
 	int oldest = 0;
 	for (int i = 0; i < MAX_CONTACTS; i++)
-		if (contacts[i].getCratedAt() < contacts[oldest].getCratedAt())
+		if (contacts[i].getCreatedAt() < contacts[oldest].getCreatedAt())
 			oldest = i;
 	return (oldest);
 }
@@ -47,4 +47,9 @@ void PhoneBook::addContact(std::string firstName, std::string lastName, std::str
 int PhoneBook::getNumberEntries()
 {
 	return m_totalContacts;
+}
+
+Contact PhoneBook::getContact(int index)
+{
+	return contacts[index];
 }

@@ -24,15 +24,16 @@
 class PhoneBook {
 	private:
 		int m_totalContacts;
+		Contact contacts[MAX_CONTACTS];
 
 	public:
 		PhoneBook();
 		~PhoneBook();
-		Contact contacts[MAX_CONTACTS];
 		void addContact(Contact &contact);
 		void addContact(std::string firstName, std::string lastName, std::string nickname,
 			std::string phoneNumber, std::string darkestSecret);
 		int getNumberEntries();
+		Contact getContact(int index);
 };
 
 #endif

@@ -62,7 +62,7 @@ std::string Contact::getDarkestSecret()
 	return m_darkestSecret;
 }
 
-time_t Contact::getCratedAt()
+time_t Contact::getCreatedAt()
 {
 	return m_createdAt;
 }
