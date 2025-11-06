@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:34:37 by marcnava          #+#    #+#             */
-/*   Updated: 2025/10/07 21:07:47 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:00:50 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ using std::endl;
 static std::string get_replaced_line(string src, string target, string replace)
 {
 	size_t	start = 0;
+	string	result;
 
 	while ((start = src.find(target, start)) != string::npos)
 	{
-		src = src.substr(0, start);
-		src += replace;
-		src += src.substr(start, target.length());
-		start = replace.length();
+		result = src.substr(0, start);
+		result += replace;
+		result += src.substr(start + target.length());
+		src = result;
+		start += replace.length();
 	}
 	return src;
 }
