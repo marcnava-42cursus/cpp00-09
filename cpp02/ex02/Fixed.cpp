@@ -33,79 +33,92 @@ Fixed::~Fixed()
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	// std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(other.getRawBits());
 	return *this;
 }
 
 bool Fixed::operator==(const Fixed &other) const
 {
+	std::cout << "Equal assignment operator called" << std::endl;
 	return this->toFloat() == other.toFloat();
 }
 
 bool Fixed::operator!=(const Fixed &other) const
 {
+	std::cout << "Not equal assignment operator called" << std::endl;
 	return this->toFloat() != other.toFloat();
 }
 
 bool Fixed::operator>=(const Fixed &other) const
 {
+	std::cout << "Greater or equal assignment operator called" << std::endl;
 	return this->toFloat() >= other.toFloat();
 }
 
 bool Fixed::operator<=(const Fixed &other) const
 {
+	std::cout << "Less or equal assignment operator called" << std::endl;
 	return this->toFloat() <= other.toFloat();
 }
 
 bool Fixed::operator>(const Fixed &other) const
 {
+	std::cout << "Greater assignment operator called" << std::endl;
 	return this->toFloat() > other.toFloat();
 }
 
 bool Fixed::operator<(const Fixed &other) const
 {
+	std::cout << "Less assignment operator called" << std::endl;
 	return this->toFloat() < other.toFloat();
 }
 
 Fixed Fixed::operator+(const Fixed &other) const
 {
+	std::cout << "Addition assignment operator called" << std::endl;
 	Fixed result(this->toFloat() + other.toFloat());
 	return result;
 }
 
 Fixed Fixed::operator-(const Fixed &other) const
 {
+	std::cout << "Substraction assignment operator called" << std::endl;
 	Fixed result(this->toFloat() - other.toFloat());
 	return result;
 }
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
+	std::cout << "Multipllication assignment operator called" << std::endl;
 	Fixed result(this->toFloat() * other.toFloat());
 	return result;
 }
 
 Fixed Fixed::operator/(const Fixed &other) const
 {
+	std::cout << "Division assignment operator called" << std::endl;
 	Fixed result(this->toFloat() / other.toFloat());
 	return result;
 }
 
 Fixed	&Fixed::operator++(void)
 {
+	std::cout << "Preincrement assignment operator called" << std::endl;
 	this->setRawBits(this->getRawBits() + 1);
 	return (*this);
 }
 
 Fixed	&Fixed::operator--(void)
 {
+	std::cout << "Predecrement assignment operator called" << std::endl;
 	this->setRawBits(this->getRawBits() - 1);
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int)
 {
+	std::cout << "Postincrement assignment operator called" << std::endl;
 	Fixed tmp = *this;
 	this->setRawBits(this->getRawBits() + 1);
 	return (tmp);
@@ -113,6 +126,7 @@ Fixed	Fixed::operator++(int)
 
 Fixed	Fixed::operator--(int)
 {
+	std::cout << "Postdecrement assignment operator called" << std::endl;
 	Fixed tmp = *this;
 	this->setRawBits(this->getRawBits() - 1);
 	return (tmp);
@@ -120,6 +134,7 @@ Fixed	Fixed::operator--(int)
 
 int Fixed::getRawBits() const
 {
+	std::cout << "Member function operator called" << std::endl;
 	return m_fp_number;
 }
 
@@ -152,6 +167,7 @@ const Fixed	&Fixed::max(Fixed const &f1, Fixed const &f2)
 
 std::ostream &operator<<(std::ostream &os, Fixed const &fixed)
 {
+	
 	os << fixed.toFloat();
 	return os;
 }
