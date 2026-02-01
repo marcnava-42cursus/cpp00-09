@@ -1,20 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 14:22:36 by aperez-b          #+#    #+#             */
-/*   Updated: 2025/11/06 18:50:34 by marcnava         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ClapTrap.hpp"
 
 void	alice_rundown(void)
 {
 	ClapTrap alice("Alice");
+
+	std::cout << "Alice stats => HP: " << alice.getHp() << ", EP: " << alice.getEp() << ", AD: " << alice.getAd() << std::endl;
+	alice.setAd(3);
+	std::cout << "Alice new AD: " << alice.getAd() << std::endl;
+	alice.setName("Alice_2");
+	std::cout << "Alice new name: " << alice.getName() << std::endl;
 
 	alice.attack("Bob");
 	alice.attack("Chris");
@@ -33,6 +27,12 @@ void	alice_rundown(void)
 void	bob_rundown(void)
 {
 	ClapTrap	bob("Bob");
+
+	std::cout << "Bob stats => HP: " << bob.getHp() << ", EP: " << bob.getEp() << ", AD: " << bob.getAd() << std::endl;
+	bob.setEp(3);
+	std::cout << "Bob new EP: " << bob.getEp() << std::endl;
+	bob.setName("Bobby");
+	std::cout << "Bob new name: " << bob.getName() << std::endl;
 
 	while (bob.getHp())
 	{

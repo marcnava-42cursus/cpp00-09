@@ -6,7 +6,7 @@
 /*   By: marcnava <marcnava@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:23:19 by tblaase           #+#    #+#             */
-/*   Updated: 2025/11/24 19:35:35 by marcnava         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:30:41 by marcnava         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class DiamondTrap: public ScavTrap, public FragTrap
 
 		void attack(const std::string &target);
 		void whoAmI(void);
+
+		std::string const &getName(void) const;
+		void setName(const std::string &name);
 };
 
 #endif

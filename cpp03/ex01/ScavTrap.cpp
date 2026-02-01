@@ -1,19 +1,18 @@
 #include "ScavTrap.hpp"
 
-// Constructors
 ScavTrap::ScavTrap(): ClapTrap()
 {
 	this->m_hp = 100;
 	this->m_ep = 50;
 	this->m_ad = 20;
 	this->m_gate = false;
-	std::cout << "ScavTrap Default Constructor called" << std::endl;
+	std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
 {
 	this->m_gate = copy.m_gate;
-	std::cout << "ScavTrap Copy Constructor called" << std::endl;
+	std::cout << "ScavTrap copy constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
@@ -22,19 +21,16 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	this->m_ep = 50;
 	this->m_ad = 20;
 	this->m_gate = false;
-	std::cout << "ScavTrap Constructor for the name " << this->m_name << " called" << std::endl;
 }
 
-// Deconstructors
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap Deconstructor for " << this->m_name << " called" << std::endl;
+	std::cout << "ScavTrap destructor called" << std::endl;
 }
 
-// Overloaded Operators
 ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
-	std::cout << "ScavTrap Assignation operator called" << std::endl;
+	std::cout << "ScavTrap assignation operator called" << std::endl;
 	this->m_name = src.m_name;
 	this->m_hp = src.m_hp;
 	this->m_ep = src.m_ep;
@@ -42,18 +38,17 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 	return *this;
 }
 
-// Public Methods
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->m_ep > 0 && this->m_hp > 0)
+	if (this->m_ep != 0 && this->m_hp > 0)
 	{
 		std::cout << "ScavTrap " << this->m_name << " attacks " << target << ", causing " << this->m_ad << " points of damage!" << std::endl;
 		this->m_ep--;
 	}
-	else if (this->m_ep == 0)
-		std::cout << "ScavTrap " << this->m_name << " is not able to attack " << target << ", because he has no energy points left." << std::endl;
-	else
-		std::cout << "ScavTrap " << this->m_name << " is not able to attack " << target << ", because he has not enough hit points." << std::endl;
+	if (this->m_hp <= 0)
+		std::cout << "ScavTrap " << this->m_name << " is death!" << std::endl;
+	if (this->m_ep == 0)
+		std::cout << "ScavTrap " << this->m_name << " is out of energy!" << std::endl;
 }
 
 void	ScavTrap::guardGate(void)
@@ -65,4 +60,14 @@ void	ScavTrap::guardGate(void)
 	}
 	else
 		std::cout << "ScavTrap " << this->m_name << " is already guarding the gate." << std::endl;
+}
+
+bool const &ScavTrap::getGate(void) const
+{
+	return this->m_gate;
+}
+
+void ScavTrap::setGate(const bool &gate)
+{
+	this->m_gate = gate;
 }
