@@ -38,15 +38,15 @@ void Harl::complain(std::string level)
 		case 0:
 		std::cout << "[ DEBUG ]" << std::endl;
 			Harl::m_debug();
-			// fallthrough
+      //fallthrough
 		case 1:
 			std::cout << "[ INFO ]" << std::endl;
 			Harl::m_info();
-			// fallthrough
+      //fallthrough
 		case 2:
 			std::cout << "[ WARNING ]" << std::endl;
 			Harl::m_warning();
-			// fallthrough
+      //fallthrough
 		case 3:
 			std::cout << "[ ERROR ]" << std::endl;
 			Harl::m_error();
