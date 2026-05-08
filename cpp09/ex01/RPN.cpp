@@ -1,9 +1,6 @@
 #include "RPN.hpp"
 
-RPN::RPN(void)
-{
-	addElement(0);
-}
+RPN::RPN(void) { }
 
 RPN::RPN(const RPN& other)
 {
@@ -12,8 +9,9 @@ RPN::RPN(const RPN& other)
 
 RPN& RPN::operator=(const RPN& other)
 {
-	if (this->getData() != other.getData())
-		this->_data = other._data;
+	if (this->getData() == other.getData())
+		return *this;
+	this->_data = other._data;
 	return *this;
 }
 
@@ -33,7 +31,20 @@ void RPN::addElement(int number)
 
 int RPN::getElement(void)
 {
-	_data.pop();
+	int value;
+	if (!_data.empty())
+	{
+		value = _data.top();
+		_data.pop();
+	}
+	else
+		value = 0;
+	return (value);
+}
+
+int RPN::size(void) const
+{
+	return _data.size();
 }
 
 std::ostream& operator<<(std::ostream& os, const RPN& obj)

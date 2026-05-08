@@ -4,7 +4,7 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 BUILDPATH	= build
 
-SRCS		= 
+SRCS		= main.cpp RPN.cpp
 
 OBJS		= $(SRCS:%.cpp=$(BUILDPATH)/%.o)
 

@@ -1,7 +1,7 @@
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#include <ostream>
+#include <iostream>
 #include <stack>
 #include <sstream>
 #include <cctype>
@@ -19,6 +19,7 @@ class RPN
 		const std::stack<int>& getData(void) const;
 		void addElement(int);
 		int getElement();
+		int size(void) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const RPN& obj);
