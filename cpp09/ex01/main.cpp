@@ -46,22 +46,30 @@ int main(int argc, char const *argv[])
 					return ((std::cerr << "Error" << std::endl), 1);
 			}
 			else if (cpy == '/') {
-				if (stack.size() >= 2 || n1 != 0) {
+				if (stack.size() >= 2) {
 					n1 = stack.getElement();
 					n2 = stack.getElement();
+					if (n1 == 0)
+						return ((std::cerr << "Error" << std::endl), 1);
 					stack.addElement(n2 / n1);
 				}
 				else
 					return ((std::cerr << "Error" << std::endl), 1);
 			}
 			else {
-				if (cpy == ' ')
-					continue;
-				std::cerr << "Error" << std::endl;
-				return 1;
+				if (cpy == ' ');
+				else {
+					std::cerr << "Error" << std::endl;
+					return 1;
+				}
 			}
 		}
 		i++;
+	}
+	if (stack.size() != 1)
+	{
+		std::cerr << "Error" << std::endl;
+		return 1;
 	}
 	std::cout << stack.getElement() << std::endl;
 	return 0;
