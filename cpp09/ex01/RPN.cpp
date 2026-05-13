@@ -47,6 +47,52 @@ int RPN::size(void) const
 	return _data.size();
 }
 
+void RPN::sum(void) {
+	int n1, n2;
+	if (this->_data.size() >= 2) {
+		n1 = this->getElement();
+		n2 = this->getElement();
+		this->addElement(n1 + n2);
+	}
+	else
+		throw std::runtime_error("Error");
+}
+
+void RPN::sub(void) {
+	int n1, n2;
+	if (this->_data.size() >= 2) {
+		n1 = this->getElement();
+		n2 = this->getElement();
+		this->addElement(n2 - n1);
+	}
+	else
+		throw std::runtime_error("Error");
+}
+
+void RPN::mul(void) {
+	int n1, n2;
+	if (this->_data.size() >= 2) {
+		n1 = this->getElement();
+		n2 = this->getElement();
+		this->addElement(n1 * n2);
+	}
+	else
+		throw std::runtime_error("Error");
+}
+
+void RPN::div(void) {
+	int n1, n2;
+	if (this->_data.size() >= 2) {
+		n1 = this->getElement();
+		n2 = this->getElement();
+		if (n1 == 0)
+			throw std::runtime_error("Error");
+		this->addElement(n2 / n1);
+	}
+	else
+		throw std::runtime_error("Error");
+}
+
 std::ostream& operator<<(std::ostream& os, const RPN& obj)
 {
 	(void)obj;

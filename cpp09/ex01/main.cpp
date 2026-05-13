@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-	if (!argv || argc < 2)
+	if (!argv || argc != 2)
 	{
 		std::cerr << "Error" << std::endl;
 		return 1;
@@ -13,55 +13,29 @@ int main(int argc, char const *argv[])
 	int i = 0;
 	while (argv[1][i] != '\0') {
 		char cpy = argv[1][i];
-		int n1, n2;
 
 		if (std::isdigit(cpy))
 			stack.addElement(cpy - '0');
 		else {
-			if (cpy == '+') {
-				if (stack.size() >= 2) {
-					n1 = stack.getElement();
-					n2 = stack.getElement();
-					stack.addElement(n1 + n2);
-				}
-				else
-					return ((std::cerr << "Error" << std::endl), 1);
-			}
-			else if (cpy == '-') {
-				if (stack.size() >= 2) {
-					n1 = stack.getElement();
-					n2 = stack.getElement();
-					stack.addElement(n2 - n1);
-				}
-				else
-					return ((std::cerr << "Error" << std::endl), 1);
-			}
-			else if (cpy == '*') {
-				if (stack.size() >= 2) {
-					n1 = stack.getElement();
-					n2 = stack.getElement();
-					stack.addElement(n1 * n2);
-				}
-				else
-					return ((std::cerr << "Error" << std::endl), 1);
-			}
-			else if (cpy == '/') {
-				if (stack.size() >= 2) {
-					n1 = stack.getElement();
-					n2 = stack.getElement();
-					if (n1 == 0)
-						return ((std::cerr << "Error" << std::endl), 1);
-					stack.addElement(n2 / n1);
-				}
-				else
-					return ((std::cerr << "Error" << std::endl), 1);
-			}
-			else {
-				if (cpy == ' ');
+			try {
+				if (cpy == '+')
+					stack.sum();
+				else if (cpy == '-')
+					stack.sub();
+				else if (cpy == '*')
+					stack.mul();
+				else if (cpy == '/')
+					stack.div();
 				else {
-					std::cerr << "Error" << std::endl;
-					return 1;
+					if (cpy != ' ') {
+						std::cerr << "Error" << std::endl;
+						return 1;
+					}
 				}
+			}
+			catch (std::exception& ex) {
+				std::cerr << ex.what() << std::endl;
+				return 1;
 			}
 		}
 		i++;

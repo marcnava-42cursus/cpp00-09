@@ -20,6 +20,11 @@ class RPN
 		void addElement(int);
 		int getElement();
 		int size(void) const;
+
+		void sum(void);
+		void sub(void);
+		void mul(void);
+		void div(void);
 };
 
 std::ostream& operator<<(std::ostream& os, const RPN& obj);
